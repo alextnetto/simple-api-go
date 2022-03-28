@@ -1,0 +1,14 @@
+version: "3.0"
+services:
+  postgres:
+    container_name: simple-db
+    image: postgres:12.3-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+      - POSTGRES_DB=${DATABASE_NAME}
+    volumes:
+      - ${DATABASE_VOLUME_PATH}:/var/lib/postgresql/data
+    env_file:
+      - ./.env
